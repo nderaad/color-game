@@ -1,0 +1,60 @@
+body {
+  margin: 0px;
+  /*background-color: #4e535a;*/
+  background-image: url(https://unsplash.it/1000/1000/?random);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.main {
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 1%;
+
+}
+
+.control {
+  background-color: white;
+  text-align: center;
+}
+
+#pid {
+  font-weight: bold;
+}
+
+.square {
+  float: left;
+  position: relative;
+  margin: 5%;
+  overflow:hidden;
+  width: 20%;
+  padding-bottom: 20%;
+  background: inherit;
+  border-radius: 15px;
+}
+
+.intro {
+  background-color: #5ea8cc;
+  background-size: 100%;
+  margin: 0px;
+}
+
+#s1 {
+
+}
+#s2 {
+  background-color: yellow;
+}
+#s3 {
+  background-color: green;
+}
+#s4 {
+  background-color: blue;
+}
+#s5 {
+  background-color: teal;
+}
+#s6 {
+  background-color: violet;
+}
