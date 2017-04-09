@@ -15,6 +15,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var color1 = colorGen()
     var color2 = colorGen()
     var color3 = colorGen()
+    function randomPickEasy(){
+      var rand = Math.floor(Math.random()*6);
+      return colArrEasy[rand];
+    }
+    var colArrEasy = [color1, color2, color3];
+    $( "#pid" ).replaceWith( "<a><strong>" + randomPick() + "</strong></a>" );
 
   });
 
