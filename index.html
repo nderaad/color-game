@@ -5,16 +5,22 @@
     <link rel="stylesheet" href="core.css"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script type ="text/javascript" src='color.js'></script>
+    <!-- <script type ="text/javascript" src='easy.js'></script> -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <title>Guess Game</title>
   </head>
   <body>
-    <div class = "intro">The Great</div>
-    <div class = "intro"><span id='pid'></span></div>
-    <div class = "intro">Guessing Game</div>
-    <div class = "control">
-      <a>New Colors</a>
-      <a>Easy</a>
-      <a>Hard</a>
+    <div class="container">
+      <div class="topdiv">
+        <div class = "intro">The Great</div>
+        <div class = "intro"><span id='pid'></span></div>
+        <div class = "intro">Guessing Game</div>
+        <div class = "control">
+          <button>New Colors</button>
+          <button id='easy'>Easy</button>
+          <button class='selected' id='hard'>Hard</button>
+        </div>
+      </div>
     </div>
     <div class = "main">
       <a class = "square" id = "s1"></a>

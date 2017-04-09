@@ -6,7 +6,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var s5 = document.getElementById('s5');
   var s6 = document.getElementById('s6');
   var pid = document.getElementById('pid');
+  var easy = document.getElementById('easy');
+  var hard = document.querySelector('#hard');
 
+  easy.addEventListener('click',function(){
+    easy.classList.add('selected');
+    hard.classList.remove('selected');
+    var color1 = colorGen()
+    var color2 = colorGen()
+    var color3 = colorGen()
+
+  });
+
+  hard.addEventListener('click',function(){
+    hard.classList.add('selected');
+    easy.classList.remove('selected');
+  });
+
+// BEGIN HARD
 // function to generate random colors
   function colorGen() {
     var r = Math.floor(Math.random()*256);
@@ -22,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   $("#s4").css('background-color', colorGen());
   $("#s5").css('background-color', colorGen());
   $("#s6").css('background-color', colorGen());
-// assign newly generated colore to variable
+// assign newly generated color to variable
   var color1 = $('#s1').css("background-color");
   var color2 = $('#s2').css("background-color");
   var color3 = $('#s3').css("background-color");
@@ -42,34 +59,75 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   s1.addEventListener("click",function(){
     if(color1 == pid.textContent){
-      alert('yay');
+      $("#s2").css('background-color', color1);
+      $("#s3").css('background-color', color1);
+      $("#s4").css('background-color', color1);
+      $("#s5").css('background-color', color1);
+      $("#s6").css('background-color', color1);
+    }
+    else{
+    $("#s1").fadeTo("slow", 0.0);
     }
   });
   s2.addEventListener("click",function(){
     if(color2 == pid.textContent){
-      alert('yay');
+      $("#s1").css('background-color', color2);
+      $("#s3").css('background-color', color2);
+      $("#s4").css('background-color', color2);
+      $("#s5").css('background-color', color2);
+      $("#s6").css('background-color', color2);
+    }
+    else{
+    $("#s2").fadeTo("slow", 0.0);
     }
   });
   s3.addEventListener("click",function(){
     if(color3 == pid.textContent){
-      alert('yay');
+      $("#s1").css('background-color', color3);
+      $("#s2").css('background-color', color3);
+      $("#s4").css('background-color', color3);
+      $("#s5").css('background-color', color3);
+      $("#s6").css('background-color', color3);
+    }
+    else {
+    $("#s3").fadeTo("slow", 0.0);
     }
   });
   s4.addEventListener("click",function(){
     if(color4 == pid.textContent){
-      alert('yay');
+      $("#s1").css('background-color', color4);
+      $("#s2").css('background-color', color4);
+      $("#s3").css('background-color', color4);
+      $("#s5").css('background-color', color4);
+      $("#s6").css('background-color', color4);
+    }
+    else {
+      $("#s4").fadeTo("slow", 0.0);
     }
   });
   s5.addEventListener("click",function(){
     if(color5 == pid.textContent){
-      alert('yay');
+      $("#s1").css('background-color', color5);
+      $("#s2").css('background-color', color5);
+      $("#s3").css('background-color', color5);
+      $("#s4").css('background-color', color5);
+      $("#s6").css('background-color', color5);
+    }
+    else{
+      $("#s5").fadeTo("slow", 0.0);
     }
   });
   s6.addEventListener("click",function(){
     if(color6 == pid.textContent){
-      alert('yay');
+      $("#s1").css('background-color', color6);
+      $("#s2").css('background-color', color6);
+      $("#s3").css('background-color', color6);
+      $("#s4").css('background-color', color6);
+      $("#s5").css('background-color', color6);
     }
+    else{
+    $("#s6").fadeTo("slow", 0.0);
+  }
   });
-
 
 });

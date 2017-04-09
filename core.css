@@ -1,22 +1,50 @@
 body {
   margin: 0px;
-  /*background-color: #4e535a;*/
-  background-image: url(https://unsplash.it/1000/1000/?random);
+  /*background-color: #white;*/
+  background-image: url('coloredpencils.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-.main {
-  margin-left: 30%;
-  margin-right: 30%;
-  margin-top: 1%;
+.selected {
+  background-color: blue;
+  color: #FFFFFF;
+}
 
+.container{
+  background-color: #5ea8cc;
+}
+
+.topdiv {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.intro {
+  background-size: 100%;
+  margin: 0px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
+  font-size: 30px;
+}
+
+.main {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 5%;
+  margin-bottom: auto;
 }
 
 .control {
   background-color: white;
   text-align: center;
+}
+
+.fade {
+  opacity: 100%;
+
 }
 
 #pid {
@@ -26,35 +54,34 @@ body {
 .square {
   float: left;
   position: relative;
-  margin: 5%;
+  margin: 1.66%;
   overflow:hidden;
-  width: 20%;
-  padding-bottom: 20%;
+  width: 30%;
+  padding-bottom: 30%;
   background: inherit;
   border-radius: 15px;
 }
 
-.intro {
-  background-color: #5ea8cc;
-  background-size: 100%;
-  margin: 0px;
-}
-
 #s1 {
+  -webkit-transition: background-color 500ms linear;
+}
 
-}
 #s2 {
-  background-color: yellow;
+  -webkit-transition: background-color 500ms linear;
 }
+
 #s3 {
-  background-color: green;
+  -webkit-transition: background-color 500ms linear;
 }
+
 #s4 {
-  background-color: blue;
+  -webkit-transition: background-color 500ms linear;
 }
+
 #s5 {
-  background-color: teal;
+  -webkit-transition: background-color 500ms linear;
 }
+
 #s6 {
-  background-color: violet;
+  -webkit-transition: background-color 500ms linear;
 }
