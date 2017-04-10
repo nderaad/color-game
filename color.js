@@ -8,15 +8,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var pid = document.getElementById('pid');
   var easy = document.getElementById('easy');
   var hard = document.querySelector('#hard');
+  var res = document.querySelector('#reset');
 
+// BEGIN EASY BUTTON
   easy.addEventListener('click',function(){
-    function colorGen() {
-      var r = Math.floor(Math.random()*256);
-      var g = Math.floor(Math.random()*256);
-      var b = Math.floor(Math.random()*256);
-      var newColor = "rgb(" + r +", " + g + ", " + b +")";
-      return newColor;
-    }
     easy.classList.add('selected');
     hard.classList.remove('selected');
     var color1E = colorGen()
@@ -49,43 +44,59 @@ document.addEventListener("DOMContentLoaded", function(event) {
     $("#s2").fadeTo("slow", 1.0);
     $("#s3").fadeTo("slow", 1.0);
 
-    s1.addEventListener("click",function(){
-      if(color1E == pid.textContent){
-        $("#s2").css('background-color', color1E);
-        $("#s3").css('background-color', color1E);
-      }
-      else{
-      $("#s1").fadeTo("slow", 0.0);
-      }
-    });
-    s2.addEventListener("click",function(){
-      if(color2E == pid.textContent){
-        $("#s1").css('background-color', color2E);
-        $("#s3").css('background-color', color2E);
-      }
-      else{
-      $("#s2").fadeTo("slow", 0.0);
-      }
-    });
-    s3.addEventListener("click",function(){
-      if(color3E == pid.textContent){
-        $("#s1").css('background-color', color3E);
-        $("#s2").css('background-color', color3E);
-      }
-      else {
-      $("#s3").fadeTo("slow", 0.0);
-      }
-    });
-
-
   });
+// END EASY BUTTON
 
-  hard.addEventListener('click',function(){
-    hard.classList.add('selected');
-    easy.classList.remove('selected');
-  });
+hard.addEventListener("click",function(){
+  hard.classList.add('selected');
+  easy.classList.remove('selected');
+  reset();
+});
 
-// BEGIN HARD
+res.addEventListener("click",function(){
+  hard.classList.add('selected');
+  easy.classList.remove('selected');
+  reset();
+});
+
+// RESET function
+function reset(){
+  $("#s1").fadeTo("slow",1.0);
+  $("#s2").fadeTo("slow",1.0);
+  $("#s3").fadeTo("slow",1.0);
+  $("#s4").fadeTo("slow",1.0);
+  $("#s5").fadeTo("slow",1.0);
+  $("#s6").fadeTo("slow",1.0);
+
+// generate random color and assign to CSS for each square
+  var color1H = colorGen()
+  var color2H = colorGen()
+  var color3H = colorGen()
+  var color4H = colorGen()
+  var color5H = colorGen()
+  var color6H = colorGen()
+// create color variable array
+  var colArrHard = [color1H, color2H, color3H, color4H, color5H, color6H]
+
+//randomly grab one of the colors from the color array
+  function randomPickHard(){
+    var rand = Math.floor(Math.random()*6);
+    return colArrHard[rand];
+  }
+// assign random color from array to
+  $( "#pid" ).replaceWith( "<span id='pid'><strong>" + randomPickHard() + "</strong></span>");
+
+// assigning colors
+  $("#s1").css('background-color', color1H);
+  $("#s2").css('background-color', color2H);
+  $("#s3").css('background-color', color3H);
+  $("#s4").css('background-color', color4H);
+  $("#s5").css('background-color', color5H);
+  $("#s6").css('background-color', color6H);
+};
+
+//END HARD
+
 // function to generate random colors
   function colorGen() {
     var r = Math.floor(Math.random()*256);
@@ -110,20 +121,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var color6 = $('#s6').css("background-color");
 // create color variable array
   var colArr = [color1, color2, color3, color4, color5, color6]
-
 //randomly grab one of the colors from the color array
   function randomPick(){
     var rand = Math.floor(Math.random()*6);
     return colArr[rand];
   }
 // assign random color from array to
-  $( "#pid" ).append( "<a>" + randomPick() + "</a>" );
+  $( "#pid" ).replaceWith( "<span id='pid'><strong>" + randomPick() + "</strong></span>" );
 
   s1.addEventListener("click",function(){
     if($('#easy').hasClass('selected')){
 
       if($('#s1').css("background-color") == $("#pid").text()){
-        alert('works');
         $("#s2").css('background-color', $('#s1').css("background-color"));
         $("#s3").css('background-color', $('#s1').css("background-color"));
       }
@@ -132,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
     }
     else {
-      if($('#s1').css("background-color") == pid.textContent){
+      if($('#s1').css("background-color") == $("#pid").text()){
         $("#s2").css('background-color', $('#s1').css("background-color"));
         $("#s3").css('background-color', $('#s1').css("background-color"));
         $("#s4").css('background-color', $('#s1').css("background-color"));
@@ -146,8 +155,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   });
   s2.addEventListener("click",function(){
     if($('#easy').hasClass('selected')){
-      if($('#s2').css("background-color") == pid.textContent){
-        alert('works');
+      if($('#s2').css("background-color") == $("#pid").text()){
         $("#s1").css('background-color', $('#s2').css("background-color"));
         $("#s3").css('background-color', $('#s2').css("background-color"));
       }
@@ -156,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
     }
     else {
-      if($('#s2').css("background-color" == pid.textContent)){
+      if($('#s2').css("background-color") == $("#pid").text()){
         $("#s1").css('background-color', $('#s2').css("background-color"));
         $("#s3").css('background-color', $('#s2').css("background-color"));
         $("#s4").css('background-color', $('#s2').css("background-color"));
@@ -171,8 +179,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   s3.addEventListener("click",function(){
     if($('#easy').hasClass('selected')){
-      if($('#s3').css("background-color") == pid.textContent){
-        alert('works');
+      if($('#s3').css("background-color") == $("#pid").text()){
         $("#s1").css('background-color', $('#s3').css("background-color"));
         $("#s2").css('background-color', $('#s3').css("background-color"));
       }
@@ -181,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
     }
     else {
-      if($('#s3').css("background-color") == pid.textContent){
+      if($('#s3').css("background-color") == $("#pid").text()){
         $("#s1").css('background-color', $('#s3').css("background-color"));
         $("#s2").css('background-color', $('#s3').css("background-color"));
         $("#s4").css('background-color', $('#s3').css("background-color"));
@@ -195,36 +202,36 @@ document.addEventListener("DOMContentLoaded", function(event) {
   });
 
   s4.addEventListener("click",function(){
-    if(color4 == pid.textContent){
-      $("#s1").css('background-color', color4);
-      $("#s2").css('background-color', color4);
-      $("#s3").css('background-color', color4);
-      $("#s5").css('background-color', color4);
-      $("#s6").css('background-color', color4);
+    if($('#s4').css("background-color") == $("#pid").text()){
+      $("#s1").css('background-color', $('#s4').css("background-color"));
+      $("#s2").css('background-color', $('#s4').css("background-color"));
+      $("#s3").css('background-color', $('#s4').css("background-color"));
+      $("#s5").css('background-color', $('#s4').css("background-color"));
+      $("#s6").css('background-color', $('#s4').css("background-color"));
     }
     else {
       $("#s4").fadeTo("slow", 0.0);
     }
   });
   s5.addEventListener("click",function(){
-    if(color5 == pid.textContent){
-      $("#s1").css('background-color', color5);
-      $("#s2").css('background-color', color5);
-      $("#s3").css('background-color', color5);
-      $("#s4").css('background-color', color5);
-      $("#s6").css('background-color', color5);
+    if($('#s5').css("background-color") == $("#pid").text()){
+      $("#s1").css('background-color', $('#s5').css("background-color"));
+      $("#s2").css('background-color', $('#s5').css("background-color"));
+      $("#s3").css('background-color', $('#s5').css("background-color"));
+      $("#s4").css('background-color', $('#s5').css("background-color"));
+      $("#s6").css('background-color', $('#s5').css("background-color"));
     }
     else{
       $("#s5").fadeTo("slow", 0.0);
     }
   });
   s6.addEventListener("click",function(){
-    if(color6 == pid.textContent){
-      $("#s1").css('background-color', color6);
-      $("#s2").css('background-color', color6);
-      $("#s3").css('background-color', color6);
-      $("#s4").css('background-color', color6);
-      $("#s5").css('background-color', color6);
+    if($('#s6').css("background-color") == $("#pid").text()){
+      $("#s1").css('background-color', $('#s6').css("background-color"));
+      $("#s2").css('background-color', $('#s6').css("background-color"));
+      $("#s3").css('background-color', $('#s6').css("background-color"));
+      $("#s4").css('background-color', $('#s6').css("background-color"));
+      $("#s5").css('background-color', $('#s6').css("background-color"));
     }
     else{
     $("#s6").fadeTo("slow", 0.0);

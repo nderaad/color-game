@@ -1,7 +1,6 @@
 body {
   margin: 0px;
-  /*background-color: #white;*/
-  background-image: url('coloredpencils.jpg');
+  background-color: #FBFBFB;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -38,7 +37,7 @@ body {
 }
 
 .control {
-  background-color: white;
+  background-color: lightgrey;
   text-align: center;
 }
 
