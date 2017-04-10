@@ -10,17 +10,73 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var hard = document.querySelector('#hard');
 
   easy.addEventListener('click',function(){
+    function colorGen() {
+      var r = Math.floor(Math.random()*256);
+      var g = Math.floor(Math.random()*256);
+      var b = Math.floor(Math.random()*256);
+      var newColor = "rgb(" + r +", " + g + ", " + b +")";
+      return newColor;
+    }
     easy.classList.add('selected');
     hard.classList.remove('selected');
-    var color1 = colorGen()
-    var color2 = colorGen()
-    var color3 = colorGen()
+    var color1E = colorGen()
+    var color2E = colorGen()
+    var color3E = colorGen()
+    var colArrEasy = [color1E, color2E, color3E];
     function randomPickEasy(){
-      var rand = Math.floor(Math.random()*6);
+      var rand = Math.floor(Math.random()*3);
       return colArrEasy[rand];
     }
-    var colArrEasy = [color1, color2, color3];
-    $( "#pid" ).replaceWith( "<a><strong>" + randomPick() + "</strong></a>" );
+// assigning random number to prompt
+    $( "#pid" ).replaceWith( "<span id='pid'><strong>" + randomPickEasy() + "</strong></span>" );
+// getting rid of bottom 3 squares
+    $("#s4").fadeTo("slow", 0.0);
+    $("#s5").fadeTo("slow", 0.0);
+    $("#s6").fadeTo("slow", 0.0);
+
+// assign null to bottom 3 squares
+    $("#s4").css('background-color', null);
+    $("#s5").css('background-color', null);
+    $("#s6").css('background-color', null);
+
+// assigning colors
+    $("#s1").css('background-color', color1E);
+    $("#s2").css('background-color', color2E);
+    $("#s3").css('background-color', color3E);
+
+//bringing back top 3 squares
+    $("#s1").fadeTo("slow", 1.0);
+    $("#s2").fadeTo("slow", 1.0);
+    $("#s3").fadeTo("slow", 1.0);
+
+    s1.addEventListener("click",function(){
+      if(color1E == pid.textContent){
+        $("#s2").css('background-color', color1E);
+        $("#s3").css('background-color', color1E);
+      }
+      else{
+      $("#s1").fadeTo("slow", 0.0);
+      }
+    });
+    s2.addEventListener("click",function(){
+      if(color2E == pid.textContent){
+        $("#s1").css('background-color', color2E);
+        $("#s3").css('background-color', color2E);
+      }
+      else{
+      $("#s2").fadeTo("slow", 0.0);
+      }
+    });
+    s3.addEventListener("click",function(){
+      if(color3E == pid.textContent){
+        $("#s1").css('background-color', color3E);
+        $("#s2").css('background-color', color3E);
+      }
+      else {
+      $("#s3").fadeTo("slow", 0.0);
+      }
+    });
+
 
   });
 
@@ -64,41 +120,80 @@ document.addEventListener("DOMContentLoaded", function(event) {
   $( "#pid" ).append( "<a>" + randomPick() + "</a>" );
 
   s1.addEventListener("click",function(){
-    if(color1 == pid.textContent){
-      $("#s2").css('background-color', color1);
-      $("#s3").css('background-color', color1);
-      $("#s4").css('background-color', color1);
-      $("#s5").css('background-color', color1);
-      $("#s6").css('background-color', color1);
+    if($('#easy').hasClass('selected')){
+
+      if($('#s1').css("background-color") == $("#pid").text()){
+        alert('works');
+        $("#s2").css('background-color', $('#s1').css("background-color"));
+        $("#s3").css('background-color', $('#s1').css("background-color"));
+      }
+      else{
+      $("#s1").fadeTo("slow", 0.0);
+      }
     }
-    else{
-    $("#s1").fadeTo("slow", 0.0);
+    else {
+      if($('#s1').css("background-color") == pid.textContent){
+        $("#s2").css('background-color', $('#s1').css("background-color"));
+        $("#s3").css('background-color', $('#s1').css("background-color"));
+        $("#s4").css('background-color', $('#s1').css("background-color"));
+        $("#s5").css('background-color', $('#s1').css("background-color"));
+        $("#s6").css('background-color', $('#s1').css("background-color"));
+      }
+      else{
+      $("#s1").fadeTo("slow", 0.0);
+      }
     }
   });
   s2.addEventListener("click",function(){
-    if(color2 == pid.textContent){
-      $("#s1").css('background-color', color2);
-      $("#s3").css('background-color', color2);
-      $("#s4").css('background-color', color2);
-      $("#s5").css('background-color', color2);
-      $("#s6").css('background-color', color2);
-    }
-    else{
-    $("#s2").fadeTo("slow", 0.0);
-    }
-  });
-  s3.addEventListener("click",function(){
-    if(color3 == pid.textContent){
-      $("#s1").css('background-color', color3);
-      $("#s2").css('background-color', color3);
-      $("#s4").css('background-color', color3);
-      $("#s5").css('background-color', color3);
-      $("#s6").css('background-color', color3);
+    if($('#easy').hasClass('selected')){
+      if($('#s2').css("background-color") == pid.textContent){
+        alert('works');
+        $("#s1").css('background-color', $('#s2').css("background-color"));
+        $("#s3").css('background-color', $('#s2').css("background-color"));
+      }
+      else{
+      $("#s2").fadeTo("slow", 0.0);
+      }
     }
     else {
-    $("#s3").fadeTo("slow", 0.0);
+      if($('#s2').css("background-color" == pid.textContent)){
+        $("#s1").css('background-color', $('#s2').css("background-color"));
+        $("#s3").css('background-color', $('#s2').css("background-color"));
+        $("#s4").css('background-color', $('#s2').css("background-color"));
+        $("#s5").css('background-color', $('#s2').css("background-color"));
+        $("#s6").css('background-color', $('#s2').css("background-color"));
+      }
+      else{
+        $("#s2").fadeTo("slow", 0.0);
+      }
     }
   });
+
+  s3.addEventListener("click",function(){
+    if($('#easy').hasClass('selected')){
+      if($('#s3').css("background-color") == pid.textContent){
+        alert('works');
+        $("#s1").css('background-color', $('#s3').css("background-color"));
+        $("#s2").css('background-color', $('#s3').css("background-color"));
+      }
+      else{
+      $("#s3").fadeTo("slow", 0.0);
+      }
+    }
+    else {
+      if($('#s3').css("background-color") == pid.textContent){
+        $("#s1").css('background-color', $('#s3').css("background-color"));
+        $("#s2").css('background-color', $('#s3').css("background-color"));
+        $("#s4").css('background-color', $('#s3').css("background-color"));
+        $("#s5").css('background-color', $('#s3').css("background-color"));
+        $("#s6").css('background-color', $('#s3').css("background-color"));
+      }
+      else {
+      $("#s3").fadeTo("slow", 0.0);
+      }
+    };
+  });
+
   s4.addEventListener("click",function(){
     if(color4 == pid.textContent){
       $("#s1").css('background-color', color4);
